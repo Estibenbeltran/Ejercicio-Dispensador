@@ -6,13 +6,14 @@
 package principal;
 import java.util.Scanner;
 /**
- * Ejercicio en clase 1 Programacion 2 20/2/2018
+ * Ejercicio en clase 7 this
  * @version 1.0
- * @author Camilo Andres D'isidoro Flechas y Dairo Estiben Beltran Martinez
+ * @author Dairo Estiben Beltran Martinez
  */
 /**
- * Ejercicio 1: Software por consola que ingrese el nombre el alumno
- * y n cantidad de notas y al final me indique el promedio o nota final del alumno
+ * Ejercicio : dispensador que permite saber 
+ * comprar varios paquetes que informa el total
+ * de ventas y el total de ganancias
  */
 class Margarita{
 }
@@ -65,11 +66,13 @@ public class Main {
         Scanner leer = new Scanner(System.in);
         while(opc!=0){
             //segun la opcion se ejecuta el ejercicio que desee el usuario
-            System.out.println("Que ejercicio desea ejecutar?");
-            System.out.println("1)Notas de alumnos");
-            System.out.println("2)Estaciones");
-            System.out.println("3)Registro por edad");
-            System.out.println("4)Conversion de tiempo");
+            System.out.println("Bienvenido al dispensador, que deseas comprar");
+            System.out.println("1)Comprar papas margarita");
+            System.out.println("2)Comprar galletas");
+            System.out.println("3)comprar chitos");
+            System.out.println("4)Comprar chocorramos");
+            System.out.println("5)Saber la cantidad de ventas");
+            System.out.println("6)Saber las ganancias");
             System.out.println("0)Salir");
             opc = leer.nextInt();//se reciben los datos
             while(opc<0 || opc>4){//validacion de que sea la opcion que se desea no mayor ni menor
@@ -189,7 +192,10 @@ public class Main {
                     }
                     //se muestran los datos 
                     System.out.println("Los segundos digitados son: "+tem.semanas+" Semana(s) "+tem.dias+" dia(s) "+tem.horas+" hora(s) "+tem.min+" minuto(s) "+a+" segundo(s)");
-
+                    break;
+                case 5:
+                    break;
+                case 6:
                     break;
             }
         }
