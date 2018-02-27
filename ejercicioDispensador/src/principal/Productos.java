@@ -11,17 +11,27 @@ package principal;
  */
 
 public class Productos {
-    class Margarita{
+    public String nombre;
+    public int precio;
+    public int cantidad;
+    
+    int canVentas;
+    int ganancias;
+    
+        Productos(){
+            System.out.println("Productos");
+        }
+        Productos(String nombre, int precio, int cantidad){
+            
+        }
+    /*class Margarita{
+       
     }
     class Galletas{
     }
     class Chitos{
     }
     class Chocorramo{
-        int horas;
-        int dias;
-        int semanas;
-        int min;
         //setSemanas permitirá guardar el dato de las semanas totales según los cálculos en la función principal
         void setSemanas (int a){
             semanas = a;
@@ -37,5 +47,6 @@ public class Productos {
         void setMin(int a){
             min = a;
         }
-    }    
+    } 
+*/
 }
