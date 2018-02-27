@@ -18,35 +18,18 @@ public class Productos {
     int canVentas;
     int ganancias;
     
+    
         Productos(){
             System.out.println("Productos");
         }
         Productos(String nombre, int precio, int cantidad){
-            
+            this.nombre=nombre;
+            this.precio=precio;
+            this.cantidad=cantidad;
         }
-    /*class Margarita{
        
-    }
-    class Galletas{
-    }
-    class Chitos{
-    }
-    class Chocorramo{
-        //setSemanas permitirá guardar el dato de las semanas totales según los cálculos en la función principal
-        void setSemanas (int a){
-            semanas = a;
+        protected int ventas(){
+            canVentas=this.cantidad;
+            return canVentas;
         }
-        //setDias permitirá, al igual que setSemanas, guardar el dato correspondiente según los cálculos correspondientes
-        void setDias(int a){
-            dias = a;
-        }
-        //setHoras guardará las horas residuales después de haber realizado los demás cálculos
-        void setHoras(int a){
-          horas = a;
-        }
-        void setMin(int a){
-            min = a;
-        }
-    } 
-*/
 }
