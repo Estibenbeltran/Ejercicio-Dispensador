@@ -17,7 +17,8 @@ public class Productos {
     
     int canVentas;
     int ganancias;
-    
+    float porVentajas;
+    float porGanancias;
     
         Productos(){
             System.out.println("Productos");
@@ -28,7 +29,7 @@ public class Productos {
             this.cantidad=cantidad;
         }
        
-        protected int ventas(){
+        protected int ventas(int precio){
             canVentas=this.cantidad;
             return canVentas;
         }
