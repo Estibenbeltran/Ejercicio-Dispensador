@@ -14,29 +14,13 @@ public class Productos {
     public String nombre;
     public int precio;
     public int cantidad;
+    public float ganancias;
+    public float ventas;
     
-    int canVentas;
-    int ganancias;
-    int totalVentas;
-    float porVentajas;
-    float porGanancias;
-    
-        Productos(){
-            System.out.println("Productos");
-        }
         Productos(String nombre, int precio, int cantidad){
             this.nombre=nombre;
             this.precio=precio;
             this.cantidad=cantidad;
         }
-       
-        protected int ventas(int cantidad){
-            this.canVentas = cantidad;
-            totalVentas = cantidad+cantidad;
-            return this.totalVentas;
-        }
 
-    void ventas() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-}

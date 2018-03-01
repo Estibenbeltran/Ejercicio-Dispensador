@@ -5,6 +5,7 @@
  */
 package principal;
 import java.util.Scanner;
+import principal.Productos;
 /**
  * Ejercicio en clase 7 this
  * @version 1.0
@@ -21,8 +22,7 @@ public class Main {
         int opc = 5, pP1,pP2,cP1,cP2,cP=30,cG=10,cC=10,cCh=20;
         int cPapas=0,cGalletas=0,cChitos=0,cChocorramo=0,cPro1=0,cPro2=0;
         int gPapas=0,gGalletas=0,gChitos=0,gChocorramo=0,gP1=0,gP2=0;
-        float porVen=0,porGan=0,porGanT=0,porVenT=0;
-        float porGanPapas=0,porGanGalle=0,porGanChitos=0,porGanChoco=0,porGanP1=0,porGanP2=0;
+        float porGanT=0,porVenT=0;
         String pro1, pro2;
         Scanner leer = new Scanner(System.in);
         Scanner leer2 = new Scanner(System.in);
@@ -63,6 +63,8 @@ public class Main {
             Productos chocorramo= new Productos("Chocorramo", 1500, cCh);
             Productos p1 = new Productos(pro1, pP1, cP1);
             Productos p2 = new Productos(pro2, pP2, cP2);
+            //
+            
             
             //se calculan las ganancias
             
@@ -97,8 +99,8 @@ public class Main {
                         System.out.println("\nHas comprado "+papas.nombre+" con un precio de: "+papas.precio+" y los productos restantes son : "+(papas.cantidad-1)+"\n");
                         gPapas = cPapas*papas.precio;
                         porGanT = + gPapas; 
-                        porGan = (cPapas*100)/porGanT;
-                        porVen = (cPapas*100)/porVenT; 
+                        papas.ganancias = (cPapas*100)/porGanT;
+                        papas.ventas = (cPapas*100)/porVenT; 
                         break;
                     }
                     while(papas.cantidad==0){
@@ -134,8 +136,8 @@ public class Main {
                         System.out.println("\nHas comprado "+galletas.nombre+" con un precio de: "+galletas.precio+" y los productos restantes son : "+(galletas.cantidad-1)+"\n");
                         gGalletas = cGalletas*galletas.precio;
                         porGanT = + gGalletas; 
-                        porGan = (cGalletas*100)/porGanT;
-                        porVen = (cGalletas*100)/porVenT; 
+                        galletas.ganancias = (cGalletas*100)/porGanT;
+                        galletas.ventas = (cGalletas*100)/porVenT; 
                         
                         break;
                     }
@@ -173,8 +175,8 @@ public class Main {
                         System.out.println("\nHas comprado "+chitos.nombre+" con un precio de: "+chitos.precio+" y los productos restantes son : "+(chitos.cantidad-1)+"\n");
                         gChitos = cChitos*chitos.precio;
                         porGanT = + gChitos; 
-                        porGan = (cChitos*100)/porGanT;
-                        porVen = (cChitos*100)/porVenT; 
+                        chitos.ganancias= (cChitos*100)/porGanT;
+                        chitos.ventas = (cChitos*100)/porVenT; 
                         break;
                     }
                     while(chitos.cantidad==0){
@@ -210,8 +212,8 @@ public class Main {
                         System.out.println("\nHas comprado "+chocorramo.nombre+" con un precio de: "+chocorramo.precio+" y los productos restantes son : "+(chocorramo.cantidad-1)+"\n");
                         gChocorramo = cChocorramo*chocorramo.precio;
                         porGanT = + gChocorramo; 
-                        porGan = (cChocorramo*100)/porGanT;
-                        porVen = (cChocorramo*100)/porVenT; 
+                        chocorramo.ganancias= (cChocorramo*100)/porGanT;
+                        chocorramo.ventas = (cChocorramo*100)/porVenT; 
                         break;
                     }
                     while(galletas.cantidad==0){
@@ -247,8 +249,8 @@ public class Main {
                         System.out.println("\nHas comprado "+p1.nombre+" con un precio de: "+p1.precio+" y los productos restantes son : "+(p1.cantidad-1)+"\n");
                         gP1 = cPro1*p1.precio;
                         porGanT = + gP1; 
-                        porGan = (cP1*100)/porGanT;
-                        porVen = (cP1*100)/porVenT; 
+                        p1.ganancias= (cP1*100)/porGanT;
+                        p1.ventas = (cP1*100)/porVenT; 
                         break;
                     }
                     while(p1.cantidad==0){
@@ -284,8 +286,8 @@ public class Main {
                         System.out.println("\nHas comprado "+p2.nombre+" con un precio de: "+p2.precio+" y los productos restantes son : "+(p2.cantidad-1)+"\n");
                         gP2 = cPro2*p2.precio;
                         porGanT = + gP2; 
-                        porGan = (cP2*100)/porGanT;
-                        porVen = (cP2*100)/porVenT; 
+                        p2.ganancias = (cP2*100)/porGanT;
+                        p2.ventas = (cP2*100)/porVenT; 
                         break;
                     }
                     while(p2.cantidad == 0){
@@ -334,11 +336,23 @@ public class Main {
                     break;
                 case 9:
                     //calcular el % de las ventas
-                    System.out.println("El % de ventas total es de: "+porVenT);
+                    System.out.println("\nEl % de ventas de las papas margarita es de: "+papas.ganancias);
+                    System.out.println("El % de ventas de las galletas es de: "+galletas.ganancias);
+                    System.out.println("El % de ventas de los chitos es de: "+chitos.ganancias);
+                    System.out.println("El % de ventas de los chocorramos es de: "+chocorramo.ganancias);
+                    System.out.println("El % de ventas de "+pro1+" es de: "+p1.ganancias);
+                    System.out.println("El % de ventas de "+pro2+" es de: "+p2.ganancias);
+                    System.out.println("");
                     break;
                 case 10:
                     //calcular el % de las ganancias
-                    System.out.println("El % de ganancia total es de: "+porGanT);
+                    System.out.println("\nEl % de ganancias de las papas margarita es de: "+papas.ventas);
+                    System.out.println("El % de ganancias de las galletas es de: "+galletas.ventas);
+                    System.out.println("El % de ganancias de los chitos es de: "+chitos.ventas);
+                    System.out.println("El % de ganancias de los chocorramos es de: "+chocorramo.ventas);
+                    System.out.println("El % de ganancias de "+pro1+" es de: "+p1.ventas);
+                    System.out.println("El % de ganancias de "+pro2+" es de: "+p2.ventas);
+                    System.out.println("");
                     break;
             }
         }
