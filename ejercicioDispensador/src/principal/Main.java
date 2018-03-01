@@ -18,7 +18,7 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        int opc = 5, pP1,pP2,cP1=0,cP2=0,cP=30,cG=10,cC=10,cCh=20;
+        int opc = 5, pP1,pP2,cP1,cP2,cP=30,cG=10,cC=10,cCh=20;
         String pro1, pro2;
         Scanner leer = new Scanner(System.in);
         Scanner leer2 = new Scanner(System.in);
@@ -130,9 +130,27 @@ public class Main {
                     break;
                 case 5:
                     //producto 1 del usuario
+                    while(p1.cantidad>0){
+                        cP1--;
+                        System.out.println("Has comprado "+p1.nombre+" con un precio de: "+p1.precio);
+                        break;
+                    }
+                    while(p1.cantidad==0){
+                        System.out.println("Se han agotado las(los)"+p1.nombre+", por favor elija otro producto");
+                        break;
+                    }
                     break;
                 case 6:
                     //producto 2 del usuario
+                    while(p2.cantidad>0){
+                        cP2--;
+                        System.out.println("Has comprado "+p2.nombre+" con un precio de: "+p2.precio);
+                        break;
+                    }
+                    while(p2.cantidad==0){
+                        System.out.println("Se han agotado las(los)"+p2.nombre+", por favor elija otro producto");
+                        break;
+                    }
                     break;
                 case 7:
                     //calcular las ventas
