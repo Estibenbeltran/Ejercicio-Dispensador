@@ -18,7 +18,7 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        int opc = 5, pP1,pP2,cP1,cP2,cG=10,cC=10,cCh=20;
+        int opc = 5, pP1,pP2,cP1=0,cP2=0,cP=30,cG=10,cC=10,cCh=20;
         String pro1, pro2;
         Scanner leer = new Scanner(System.in);
         Scanner leer2 = new Scanner(System.in);
@@ -53,13 +53,12 @@ public class Main {
             } 
         while(opc!=0){
             //iniciacion de los constructores
-            Productos papas = new Productos("Papas Margarita", 2000, 30);
-            Productos galletas = new Productos("Galletas", 1000, 10);
-            Productos chitos = new Productos("Chitos", 2000, 10);
-            Productos chocorramo= new Productos("Chocorramo", 1500, 20);
+            Productos papas = new Productos("Papas Margarita", 2000, cP);
+            Productos galletas = new Productos("Galletas", 1000, cG);
+            Productos chitos = new Productos("Chitos", 2000, cC);
+            Productos chocorramo= new Productos("Chocorramo", 1500, cCh);
             Productos p1 = new Productos(pro1, pP1, cP1);
             Productos p2 = new Productos(pro2, pP2, cP2);
-            papas.cantidad=30;
             
             System.out.println("Bienvenido al dispensador, que deseas comprar");
             System.out.println("1)Comprar "+papas.nombre+" con precio de: "+papas.precio+" y una cantidad de: "+papas.cantidad);
@@ -83,7 +82,7 @@ public class Main {
                 case 1:
                     //margaritas
                     while(papas.cantidad>0){
-                        papas.cantidad--;
+                        cP--;
                         System.out.println("Has comprado "+papas.nombre+" con un precio de: "+papas.precio);
                         break;
                     }
@@ -94,6 +93,15 @@ public class Main {
                     break;
                 case 2:
                     //galletas
+                    while(galletas.cantidad>0){
+                        cP--;
+                        System.out.println("Has comprado "+galletas.nombre+" con un precio de: "+galletas.precio);
+                        break;
+                    }
+                    while(galletas.cantidad==0){
+                        System.out.println("Se han agotado las galletas, por favor elija otro producto");
+                        break;
+                    }
                     break;
                     //chitos
                 case 3:
