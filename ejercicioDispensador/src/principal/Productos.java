@@ -33,7 +33,7 @@ public class Productos {
         protected int ventas(int cantidad){
             this.canVentas = cantidad;
             totalVentas = cantidad+cantidad;
-            return totalVentas;
+            return this.totalVentas;
         }
 
     void ventas() {

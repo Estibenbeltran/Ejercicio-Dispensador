@@ -19,6 +19,7 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         int opc = 5, pP1,pP2,cP1,cP2,cP=30,cG=10,cC=10,cCh=20;
+        int cPapas=0,cGalletas=0,cChitos=0,cChocorramo=0,cPro1=0,cPro2=0;
         String pro1, pro2;
         Scanner leer = new Scanner(System.in);
         Scanner leer2 = new Scanner(System.in);
@@ -83,6 +84,7 @@ public class Main {
                     //margaritas
                     while(papas.cantidad>0){
                         cP--;
+                        cPapas++;
                         System.out.println("Has comprado "+papas.nombre+" con un precio de: "+papas.precio);
                         break;
                     }
@@ -95,6 +97,7 @@ public class Main {
                     //galletas
                     while(galletas.cantidad>0){
                         cG--;
+                        cGalletas++;
                         System.out.println("Has comprado "+galletas.nombre+" con un precio de: "+galletas.precio);
                         break;
                     }
@@ -108,6 +111,7 @@ public class Main {
                     //chitos
                     while(chitos.cantidad>0){
                         cC--;
+                        cChitos++;
                         System.out.println("Has comprado "+chitos.nombre+" con un precio de: "+chitos.precio);
                         break;
                     }
@@ -120,6 +124,7 @@ public class Main {
                     //chocorramo
                     while(chocorramo.cantidad>0){
                         cCh--;
+                        cChocorramo++;
                         System.out.println("Has comprado "+chocorramo.nombre+" con un precio de: "+chocorramo.precio);
                         break;
                     }
@@ -132,6 +137,7 @@ public class Main {
                     //producto 1 del usuario
                     while(p1.cantidad>0){
                         cP1--;
+                        cPro1++;
                         System.out.println("Has comprado "+p1.nombre+" con un precio de: "+p1.precio);
                         break;
                     }
@@ -164,6 +170,7 @@ public class Main {
                     //producto 2 del usuario
                     while(p2.cantidad>0){
                         cP2--;
+                        cPro2++;
                         System.out.println("Has comprado "+p2.nombre+" con un precio de: "+p2.precio);
                         break;
                     }
@@ -198,8 +205,13 @@ public class Main {
                     break;
                 case 7:
                     //calcular las ventas
-                    papas.ventas(papas.cantidad);
-                    System.out.println("la cantidad de ventas de las papas es de: "+papas.ventas(papas.cantidad));
+                    System.out.println("la cantidad de ventas de las papas es de: "+cPapas);
+                    System.out.println("la cantidad de ventas de las papas es de: "+cGalletas);
+                    System.out.println("la cantidad de ventas de las papas es de: "+cChitos);
+                    System.out.println("la cantidad de ventas de las papas es de: "+cChocorramo);
+                    System.out.println("la cantidad de ventas de las papas es de: "+cPro1);
+                    System.out.println("la cantidad de ventas de las papas es de: "+cPro2);
+                    System.out.println("");
                     break;
                 case 8:
                     //calcular las ganancias
