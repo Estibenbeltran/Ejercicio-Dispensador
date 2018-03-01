@@ -17,6 +17,7 @@ public class Productos {
     
     int canVentas;
     int ganancias;
+    int totalVentas;
     float porVentajas;
     float porGanancias;
     
@@ -29,8 +30,13 @@ public class Productos {
             this.cantidad=cantidad;
         }
        
-        protected int ventas(int precio){
-            canVentas=this.cantidad;
-            return canVentas;
+        protected int ventas(int cantidad){
+            this.canVentas = cantidad;
+            totalVentas = cantidad+cantidad;
+            return totalVentas;
         }
+
+    void ventas() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

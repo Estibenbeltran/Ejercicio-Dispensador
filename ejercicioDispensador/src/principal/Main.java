@@ -33,7 +33,7 @@ public class Main {
             System.out.println("Ingrese la cantidad de "+pro1);
             cP1 = leer.nextInt();
             while(cP1<=0){
-                System.out.println("precio invalido");
+                System.out.println("cantidad invalida");
                 cP1 = leer.nextInt();
             }
             //segundo producto que ingresa el usuario
@@ -48,7 +48,7 @@ public class Main {
             System.out.println("Ingrese la cantidad de "+pro2);
             cP2 = leer2.nextInt();
             while(cP2<=0){
-                System.out.println("precio invalido");
+                System.out.println("cantidad invalida");
                 pP1 = leer.nextInt();
             } 
         while(opc!=0){
@@ -124,7 +124,7 @@ public class Main {
                         break;
                     }
                     while(galletas.cantidad==0){
-                        System.out.println("Se han agotado los chocorramos, por favor elija otro producto");
+                        System.out.println("Se ha agotado los chocorramos, por favor elija otro producto");
                         break;
                     }
                     break;
@@ -136,7 +136,27 @@ public class Main {
                         break;
                     }
                     while(p1.cantidad==0){
-                        System.out.println("Se han agotado las(los)"+p1.nombre+", por favor elija otro producto");
+                        System.out.println("Se ha agotado "+p1.nombre+", desea ingresar una nueva cantidad?");
+                        System.out.println("1) si");
+                        System.out.println("2) no");
+                        opc = leer2.nextInt();
+                        while(opc<1 || opc>2){
+                            System.out.println("opcion invalida");
+                            opc = leer2.nextInt();
+                        }
+                        switch(opc){
+                            case 1:
+                                System.out.println("Ingrese la cantidad de "+pro1);
+                                cP1 = leer.nextInt();
+                                while(cP1<=0){
+                                    System.out.println("cantidad invalida");
+                                    cP1 = leer.nextInt();
+                                }
+                            break;    
+                            case 2:
+                                opc=1;
+                            break;
+                        }
                         break;
                     }
                     break;
@@ -147,13 +167,39 @@ public class Main {
                         System.out.println("Has comprado "+p2.nombre+" con un precio de: "+p2.precio);
                         break;
                     }
+                    while(p2.cantidad == 0){
+                        System.out.println("Se ha agotado "+p2.nombre+", desea ingresar una nueva cantidad?");
+                        System.out.println("1) si");
+                        System.out.println("2) no");
+                        opc = leer2.nextInt();
+                        while(opc<1 || opc>2){
+                            System.out.println("opcion invalida");
+                            opc = leer2.nextInt();
+                        }
+                        switch(opc){
+                            case 1:
+                                System.out.println("Ingrese la cantidad de "+pro2);
+                                cP2 = leer.nextInt();
+                                while(cP2<=0){
+                                    System.out.println("cantidad invalida");
+                                    cP2 = leer.nextInt();
+                                }
+                            break;    
+                            case 2:
+                                opc=1;
+                            break;
+                        }
+                        break;
+                    }
                     while(p2.cantidad==0){
-                        System.out.println("Se han agotado las(los)"+p2.nombre+", por favor elija otro producto");
+                        System.out.println("Se han agotado )"+p2.nombre+", por favor elija otro producto");
                         break;
                     }
                     break;
                 case 7:
                     //calcular las ventas
+                    papas.ventas(papas.cantidad);
+                    System.out.println("la cantidad de ventas de las papas es de: "+papas.ventas(papas.cantidad));
                     break;
                 case 8:
                     //calcular las ganancias
