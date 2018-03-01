@@ -94,7 +94,7 @@ public class Main {
                 case 2:
                     //galletas
                     while(galletas.cantidad>0){
-                        cP--;
+                        cG--;
                         System.out.println("Has comprado "+galletas.nombre+" con un precio de: "+galletas.precio);
                         break;
                     }
@@ -103,23 +103,42 @@ public class Main {
                         break;
                     }
                     break;
-                    //chitos
+                    
                 case 3:
-                    //chocorramos
+                    //chitos
+                    while(chitos.cantidad>0){
+                        cC--;
+                        System.out.println("Has comprado "+chitos.nombre+" con un precio de: "+chitos.precio);
+                        break;
+                    }
+                    while(chitos.cantidad==0){
+                        System.out.println("Se han agotado los chitos, por favor elija otro producto");
+                        break;
+                    }
                     break;
                 case 4:
-                    //choclitos
+                    //chocorramo
+                    while(chocorramo.cantidad>0){
+                        cCh--;
+                        System.out.println("Has comprado "+chocorramo.nombre+" con un precio de: "+chocorramo.precio);
+                        break;
+                    }
+                    while(galletas.cantidad==0){
+                        System.out.println("Se han agotado los chocorramos, por favor elija otro producto");
+                        break;
+                    }
                     break;
                 case 5:
-                    //bombombum
+                    //producto 1 del usuario
                     break;
                 case 6:
-                    //calcular la cantidad de ventas
+                    //producto 2 del usuario
                     break;
                 case 7:
-                    //calcular las ganancias
+                    //calcular las ventas
                     break;
                 case 8:
+                    //calcular las ganancias
                     break;
             }
         }
