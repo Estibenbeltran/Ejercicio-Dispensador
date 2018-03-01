@@ -18,13 +18,11 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        int opc = 5, pP1,pP2,cP1,cP2;
+        int opc = 5, pP1,pP2,cP1,cP2,cG=10,cC=10,cCh=20;
         String pro1, pro2;
         Scanner leer = new Scanner(System.in);
         Scanner leer2 = new Scanner(System.in);
-        while(opc!=0){
-            //segun la opcion se ejecuta el ejercicio que desee el usuario
-            System.out.println("Ingresa el primer producto");
+        System.out.println("Ingresa el primer producto");
             pro1 = leer.nextLine();
             System.out.println("Ingrese el precio de "+pro1);
             pP1 = leer.nextInt();
@@ -53,20 +51,23 @@ public class Main {
                 System.out.println("precio invalido");
                 pP1 = leer.nextInt();
             } 
+        while(opc!=0){
+            //iniciacion de los constructores
             Productos papas = new Productos("Papas Margarita", 2000, 30);
             Productos galletas = new Productos("Galletas", 1000, 10);
             Productos chitos = new Productos("Chitos", 2000, 10);
             Productos chocorramo= new Productos("Chocorramo", 1500, 20);
             Productos p1 = new Productos(pro1, pP1, cP1);
             Productos p2 = new Productos(pro2, pP2, cP2);
+            papas.cantidad=30;
             
             System.out.println("Bienvenido al dispensador, que deseas comprar");
             System.out.println("1)Comprar "+papas.nombre+" con precio de: "+papas.precio+" y una cantidad de: "+papas.cantidad);
             System.out.println("2)Comprar "+galletas.nombre+" con precio de: "+galletas.precio+ " y una cantidad de: "+galletas.cantidad);
-            System.out.println("3)comprar chitos");
-            System.out.println("4)Comprar chocorramo");
-            System.out.println("5)Comprar "+pro1);
-            System.out.println("6)Comprar "+pro2);
+            System.out.println("3)comprar "+chitos.nombre+" con el precio de: "+chitos.precio+" y una cantidad de: "+chitos.cantidad);
+            System.out.println("4)Comprar "+chocorramo.nombre+" con el precio de: "+chocorramo.precio+" y una cantidad de: "+chocorramo.cantidad);
+            System.out.println("5)Comprar "+p1.nombre+" con el precio de: "+p1.precio+" y una cantidad de: "+p1.cantidad);
+            System.out.println("6)Comprar "+p2.nombre+" con el precio de: "+p2.precio+" y una cantidad de: "+p2.cantidad);
             System.out.println("7)Saber la cantidad de ventas");
             System.out.println("8)Saber las ganancias");
             System.out.println("0)Salir");
@@ -81,7 +82,15 @@ public class Main {
                     break;
                 case 1:
                     //margaritas
-                    System.out.println("");
+                    while(papas.cantidad>0){
+                        papas.cantidad--;
+                        System.out.println("Has comprado "+papas.nombre+" con un precio de: "+papas.precio);
+                        break;
+                    }
+                    while(papas.cantidad==0){
+                        System.out.println("Se han agotado las papas, por favor elija otro producto");
+                        break;
+                    }
                     break;
                 case 2:
                     //galletas
