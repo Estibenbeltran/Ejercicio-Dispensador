@@ -20,10 +20,13 @@ public class Main {
     public static void main(String[] args) {
         int opc = 5, pP1,pP2,cP1,cP2,cP=30,cG=10,cC=10,cCh=20;
         int cPapas=0,cGalletas=0,cChitos=0,cChocorramo=0,cPro1=0,cPro2=0;
+        int gPapas=0,gGalletas=0,gChitos=0,gChocorramo=0,gP1=0,gP2=0;
+        float porVen=0,porGan=0,porGanT=0,porVenT=0;
+        float porGanPapas=0,porGanGalle=0,porGanChitos=0,porGanChoco=0,porGanP1=0,porGanP2=0;
         String pro1, pro2;
         Scanner leer = new Scanner(System.in);
         Scanner leer2 = new Scanner(System.in);
-        System.out.println("Ingresa el primer producto");
+        System.out.println("Ingresa el nombre del primer producto");
             pro1 = leer.nextLine();
             System.out.println("Ingrese el precio de "+pro1);
             pP1 = leer.nextInt();
@@ -38,7 +41,7 @@ public class Main {
                 cP1 = leer.nextInt();
             }
             //segundo producto que ingresa el usuario
-            System.out.println("Ingresa el segundo producto");
+            System.out.println("Ingresa el nombre del segundo producto");
             pro2 = leer2.nextLine();
             System.out.println("Ingrese el precio de "+pro2);
             pP2 = leer2.nextInt();
@@ -61,6 +64,10 @@ public class Main {
             Productos p1 = new Productos(pro1, pP1, cP1);
             Productos p2 = new Productos(pro2, pP2, cP2);
             
+            //se calculan las ganancias
+            
+            
+            
             System.out.println("\nBienvenido al dispensador, que deseas comprar\n");
             System.out.println("1)Comprar "+papas.nombre+" con precio de: "+papas.precio+" y una cantidad de: "+papas.cantidad);
             System.out.println("2)Comprar "+galletas.nombre+" con precio de: "+galletas.precio+ " y una cantidad de: "+galletas.cantidad);
@@ -70,9 +77,11 @@ public class Main {
             System.out.println("6)Comprar "+p2.nombre+" con el precio de: "+p2.precio+" y una cantidad de: "+p2.cantidad);
             System.out.println("7)Saber la cantidad de ventas");
             System.out.println("8)Saber las ganancias");
+            System.out.println("9)Saber el % de ventas");
+            System.out.println("10)Saber el % de ganancias");
             System.out.println("0)Salir\n");
             opc = leer.nextInt();//se reciben los datos
-            while(opc<0 || opc>8){//validacion de que sea la opcion que se desea no mayor ni menor
+            while(opc<0 || opc>10){//validacion de que sea la opcion que se desea no mayor ni menor
                 System.out.println("Opcion no valida");
                 opc = leer.nextInt();
             }
@@ -86,10 +95,34 @@ public class Main {
                         cP--;
                         cPapas++;
                         System.out.println("\nHas comprado "+papas.nombre+" con un precio de: "+papas.precio+" y los productos restantes son : "+(papas.cantidad-1)+"\n");
+                        gPapas = cPapas*papas.precio;
+                        porGanT = + gPapas; 
+                        porGan = (cPapas*100)/porGanT;
+                        porVen = (cPapas*100)/porVenT; 
                         break;
                     }
                     while(papas.cantidad==0){
-                        System.out.println("\nSe han agotado las papas, por favor elija otro producto\n");
+                        System.out.println("\nSe han agotado las papas, deseas cargar una nueva cantidad de papas?\n");
+                        System.out.println("1) si");
+                        System.out.println("2) no");
+                        opc = leer2.nextInt();
+                        while(opc<1 || opc>2){
+                            System.out.println("opcion invalida");
+                            opc = leer2.nextInt();
+                        }
+                        switch(opc){
+                            case 1:
+                                System.out.println("Ingrese la cantidad de "+papas.nombre);
+                                cP = leer.nextInt();
+                                while(cP<=0){
+                                    System.out.println("cantidad invalida");
+                                    cP = leer.nextInt();
+                                }
+                            break;    
+                            case 2:
+                                opc=1;
+                            break;
+                        }
                         break;
                     }
                     break;
@@ -99,10 +132,35 @@ public class Main {
                         cG--;
                         cGalletas++;
                         System.out.println("\nHas comprado "+galletas.nombre+" con un precio de: "+galletas.precio+" y los productos restantes son : "+(galletas.cantidad-1)+"\n");
+                        gGalletas = cGalletas*galletas.precio;
+                        porGanT = + gGalletas; 
+                        porGan = (cGalletas*100)/porGanT;
+                        porVen = (cGalletas*100)/porVenT; 
+                        
                         break;
                     }
                     while(galletas.cantidad==0){
-                        System.out.println("\nSe han agotado las galletas, por favor elija otro producto\n");
+                        System.out.println("\nSe han agotado las galletas, deseas cargar una nueva cantidad?\n");
+                        System.out.println("1) si");
+                        System.out.println("2) no");
+                        opc = leer2.nextInt();
+                        while(opc<1 || opc>2){
+                            System.out.println("opcion invalida");
+                            opc = leer2.nextInt();
+                        }
+                        switch(opc){
+                            case 1:
+                                System.out.println("Ingrese la cantidad de "+galletas.nombre);
+                                cG = leer.nextInt();
+                                while(cG<=0){
+                                    System.out.println("cantidad invalida");
+                                    cG = leer.nextInt();
+                                }
+                            break;    
+                            case 2:
+                                opc=1;
+                            break;
+                        } 
                         break;
                     }
                     break;
@@ -113,10 +171,34 @@ public class Main {
                         cC--;
                         cChitos++;
                         System.out.println("\nHas comprado "+chitos.nombre+" con un precio de: "+chitos.precio+" y los productos restantes son : "+(chitos.cantidad-1)+"\n");
+                        gChitos = cChitos*chitos.precio;
+                        porGanT = + gChitos; 
+                        porGan = (cChitos*100)/porGanT;
+                        porVen = (cChitos*100)/porVenT; 
                         break;
                     }
                     while(chitos.cantidad==0){
-                        System.out.println("\nSe han agotado los chitos, por favor elija otro producto\n");
+                        System.out.println("\nSe han agotado los chitos, desea volver a cargar el producto?\n");
+                        System.out.println("1) si");
+                        System.out.println("2) no");
+                        opc = leer2.nextInt();
+                        while(opc<1 || opc>2){
+                            System.out.println("opcion invalida");
+                            opc = leer2.nextInt();
+                        }
+                        switch(opc){
+                            case 1:
+                                System.out.println("Ingrese la cantidad de "+chitos.nombre);
+                                cC = leer.nextInt();
+                                while(cC<=0){
+                                    System.out.println("cantidad invalida");
+                                    cC = leer.nextInt();
+                                }
+                            break;    
+                            case 2:
+                                opc=1;
+                            break;
+                        }
                         break;
                     }
                     break;
@@ -126,10 +208,34 @@ public class Main {
                         cCh--;
                         cChocorramo++;
                         System.out.println("\nHas comprado "+chocorramo.nombre+" con un precio de: "+chocorramo.precio+" y los productos restantes son : "+(chocorramo.cantidad-1)+"\n");
+                        gChocorramo = cChocorramo*chocorramo.precio;
+                        porGanT = + gChocorramo; 
+                        porGan = (cChocorramo*100)/porGanT;
+                        porVen = (cChocorramo*100)/porVenT; 
                         break;
                     }
                     while(galletas.cantidad==0){
-                        System.out.println("\nSe ha agotado los chocorramos, por favor elija otro producto\n");
+                        System.out.println("\nSe ha agotado los chocorramos, deseas cargar una nueva cantidad del producto?\n");
+                        System.out.println("1) si");
+                        System.out.println("2) no");
+                        opc = leer2.nextInt();
+                        while(opc<1 || opc>2){
+                            System.out.println("opcion invalida");
+                            opc = leer2.nextInt();
+                        }
+                        switch(opc){
+                            case 1:
+                                System.out.println("Ingrese la cantidad de "+chocorramo.nombre);
+                                cCh = leer.nextInt();
+                                while(cCh<=0){
+                                    System.out.println("cantidad invalida");
+                                    cCh = leer.nextInt();
+                                }
+                            break;    
+                            case 2:
+                                opc=1;
+                            break;
+                        }
                         break;
                     }
                     break;
@@ -139,6 +245,10 @@ public class Main {
                         cP1--;
                         cPro1++;
                         System.out.println("\nHas comprado "+p1.nombre+" con un precio de: "+p1.precio+" y los productos restantes son : "+(p1.cantidad-1)+"\n");
+                        gP1 = cPro1*p1.precio;
+                        porGanT = + gP1; 
+                        porGan = (cP1*100)/porGanT;
+                        porVen = (cP1*100)/porVenT; 
                         break;
                     }
                     while(p1.cantidad==0){
@@ -172,6 +282,10 @@ public class Main {
                         cP2--;
                         cPro2++;
                         System.out.println("\nHas comprado "+p2.nombre+" con un precio de: "+p2.precio+" y los productos restantes son : "+(p2.cantidad-1)+"\n");
+                        gP2 = cPro2*p2.precio;
+                        porGanT = + gP2; 
+                        porGan = (cP2*100)/porGanT;
+                        porVen = (cP2*100)/porVenT; 
                         break;
                     }
                     while(p2.cantidad == 0){
@@ -201,23 +315,30 @@ public class Main {
                     break;
                 case 7:
                     //calcular las ventas
-                    System.out.println("\nla cantidad de ventas de las papas margarita es de: "+cPapas);
+                    System.out.println("la cantidad de ventas de las papas margarita es de: "+cPapas);
                     System.out.println("la cantidad de ventas de las galletas es de: "+cGalletas);
                     System.out.println("la cantidad de ventas de los chitos es de: "+cChitos);
                     System.out.println("la cantidad de ventas de los chocorramos es de: "+cChocorramo);
-                    System.out.println("la cantidad de ventas de "+p1+" es de: "+cPro1);
-                    System.out.println("la cantidad de ventas de "+p2+" es de: "+cPro2);
-                    System.out.println("");
+                    System.out.println("la cantidad de ventas de "+pro1+" es de: "+cPro1);
+                    System.out.println("la cantidad de ventas de "+pro2+" es de: "+cPro2);
                     break;
                 case 8:
                     //calcular las ganancias
-                    System.out.println("\nla cantidad de ganancias de las papas margarita es de: "+cPapas);
-                    System.out.println("la cantidad de ganancias de las galletas es de: "+cGalletas);
-                    System.out.println("la cantidad de ganancias de los chitos es de: "+cChitos);
-                    System.out.println("la cantidad de ganancias de los chocorramos es de: "+cChocorramo);
-                    System.out.println("la cantidad de ganancias de "+p1+" es de: "+cPro1);
-                    System.out.println("la cantidad de ganancias de "+p2+" es de: "+cPro2);
+                    System.out.println("\nla cantidad de ganancias de las papas margarita es de: "+gPapas);
+                    System.out.println("la cantidad de ganancias de las galletas es de: "+gGalletas);
+                    System.out.println("la cantidad de ganancias de los chitos es de: "+gChitos);
+                    System.out.println("la cantidad de ganancias de los chocorramos es de: "+gChocorramo);
+                    System.out.println("la cantidad de ganancias de "+pro1+" es de: "+gP1);
+                    System.out.println("la cantidad de ganancias de "+pro2+" es de: "+gP2);
                     System.out.println("");
+                    break;
+                case 9:
+                    //calcular el % de las ventas
+                    System.out.println("El % de ventas total es de: "+porVenT);
+                    break;
+                case 10:
+                    //calcular el % de las ganancias
+                    System.out.println("El % de ganancia total es de: "+porGanT);
                     break;
             }
         }
