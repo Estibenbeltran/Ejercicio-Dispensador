@@ -1,26 +1,17 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package principal;
-
-/**
- *
- * @author daiyd
- */
-
-public class Productos {
+public class Productos{
+    public int precio , cantidad , ventas , ganancias;
     public String nombre;
-    public int precio;
-    public int cantidad;
-    public float ganancias;
-    public float ventas;
-    
-        Productos(String nombre, int precio, int cantidad){
-            this.nombre=nombre;
-            this.precio=precio;
-            this.cantidad=cantidad;
-        }
-
+    /**
+     * CONSTRUCTOR PARA EL PRECIO, LA CANTIDAD Y EL NOMBRE DEL PRODUCTO.
+     * LAS VENTAS Y LAS GANANCIAS SE GENERAN APARTE YA QUE NO ES UN DATO PREDEFINIDO Y QUE SE MODIFICA CON EL TIEMPO
+     * @param precio
+     * @param cantidad
+     * @param nombre 
+     */
+    public Productos(int precio , int cantidad , String nombre){
+        this.precio = precio;
+        this.cantidad = cantidad;
+        this.nombre = nombre;
     }
+}

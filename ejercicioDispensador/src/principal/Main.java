@@ -1,361 +1,424 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package principal;
 import java.util.Scanner;
 import principal.Productos;
 /**
- * Ejercicio en clase 7 this
+ * Desarrollar una máquina expendedora con 4 productos que se pueden comprar de forma unitaria y poner
+ * stock, además de un menú que muestre la cantidad de ventas y basado en ello, la ganancia.
  * @version 1.0
- * @author Dairo Estiben Beltran Martinez
+ * @author Dairo Estiben Beltran Martinez y Camilo Andrés D'isidoro Flechas
  */
-/**
- * Ejercicio : dispensador que permite saber 
- * comprar varios paquetes que informa el total
- * de ventas y el total de ganancias
- */
-
 public class Main {
     public static void main(String[] args) {
-        int opc = 5, pP1,pP2,cP1,cP2,cP=30,cG=10,cC=10,cCh=20;
-        int cPapas=0,cGalletas=0,cChitos=0,cChocorramo=0,cPro1=0,cPro2=0;
-        int gPapas=0,gGalletas=0,gChitos=0,gChocorramo=0,gP1=0,gP2=0;
-        float porGanT=0,porVenT=0;
-        String pro1, pro2;
         Scanner leer = new Scanner(System.in);
-        Scanner leer2 = new Scanner(System.in);
-        System.out.println("Ingresa el nombre del primer producto");
-            pro1 = leer.nextLine();
-            System.out.println("Ingrese el precio de "+pro1);
-            pP1 = leer.nextInt();
-            while(pP1<=0){
-                System.out.println("precio invalido");
-                pP1 = leer.nextInt();
-            }
-            System.out.println("Ingrese la cantidad de "+pro1);
-            cP1 = leer.nextInt();
-            while(cP1<=0){
-                System.out.println("cantidad invalida");
-                cP1 = leer.nextInt();
-            }
-            //segundo producto que ingresa el usuario
-            System.out.println("Ingresa el nombre del segundo producto");
-            pro2 = leer2.nextLine();
-            System.out.println("Ingrese el precio de "+pro2);
-            pP2 = leer2.nextInt();
-            while(pP2<=0){
-                System.out.println("precio invalido");
-                pP2 = leer.nextInt();
-            }
-            System.out.println("Ingrese la cantidad de "+pro2);
-            cP2 = leer2.nextInt();
-            while(cP2<=0){
-                System.out.println("cantidad invalida");
-                pP1 = leer.nextInt();
-            } 
+        Scanner leerb = new Scanner(System.in);
+        int opc = 10, add,opcc,porg = 0,porv = 0;
+        int uP,uC;
+        String uN;
+        //SE PIDEN LOS PRODUCTOS PERSONALIZADOS AL USUARIO, TENIENDO EN CUENTA QUE INGRESA EL NOMBRE, EL PRECIO Y LA CANTIDAD DEL PRODUCTO
+        System.out.println("Ingrese el nombre del producto personalizado No 1");
+        uN = leer.nextLine();
+        System.out.println("Ingrese la cantidad de inventario de "+uN);
+        uC = leer.nextInt();
+        //validacion de datos
+        while(uC<0){
+            System.out.println("Cantidad no valida");
+            uC = leer.nextInt();
+        }
+        System.out.println("Ingrese el precio de "+uN);
+        uP = leer.nextInt();
+        //validacion de datos
+        while(uP<0){
+            System.out.println("Cantidad no valida");
+        uP = leer.nextInt();
+        }
+        Productos uA = new Productos(uP , uC , uN);
+        System.out.println("Ingrese el nombre del producto personalizado No 2");
+        uN = leerb.nextLine();
+        System.out.println("Ingrese la cantidad de inventario de "+uN);
+        uC = leer.nextInt();
+        //validacion de datos
+        while(uC<0){
+            System.out.println("Cantidad no valida");
+            uC = leer.nextInt();
+        }
+        System.out.println("Ingrese el precio de "+uN);
+        uP = leer.nextInt();
+        //validacion de datos
+        while(uP<0){
+            System.out.println("Cantidad no valida");
+        uP = leer.nextInt();
+        }
+        //INSTANCIADO DE OBJETOS
+        Productos uB = new Productos(uP , uC , uN);
+        Productos papas = new Productos( 2000 , 30 , "PAPAS MARGARITA");
+        Productos galletas = new Productos(1000 , 10 , "GALLETAS FESTIVAL");
+        Productos cheetos = new Productos(2000 , 10 , "CHEETOS");
+        Productos ponque = new Productos(1500 , 20 , "CHOCORRAMO");
         while(opc!=0){
-            //iniciacion de los constructores
-            Productos papas = new Productos("Papas Margarita", 2000, cP);
-            Productos galletas = new Productos("Galletas", 1000, cG);
-            Productos chitos = new Productos("Chitos", 2000, cC);
-            Productos chocorramo= new Productos("Chocorramo", 1500, cCh);
-            Productos p1 = new Productos(pro1, pP1, cP1);
-            Productos p2 = new Productos(pro2, pP2, cP2);
-            //
-            
-            
-            //se calculan las ganancias
-            
-            
-            
-            System.out.println("\nBienvenido al dispensador, que deseas comprar\n");
-            System.out.println("1)Comprar "+papas.nombre+" con precio de: "+papas.precio+" y una cantidad de: "+papas.cantidad);
-            System.out.println("2)Comprar "+galletas.nombre+" con precio de: "+galletas.precio+ " y una cantidad de: "+galletas.cantidad);
-            System.out.println("3)comprar "+chitos.nombre+" con el precio de: "+chitos.precio+" y una cantidad de: "+chitos.cantidad);
-            System.out.println("4)Comprar "+chocorramo.nombre+" con el precio de: "+chocorramo.precio+" y una cantidad de: "+chocorramo.cantidad);
-            System.out.println("5)Comprar "+p1.nombre+" con el precio de: "+p1.precio+" y una cantidad de: "+p1.cantidad);
-            System.out.println("6)Comprar "+p2.nombre+" con el precio de: "+p2.precio+" y una cantidad de: "+p2.cantidad);
-            System.out.println("7)Saber la cantidad de ventas");
-            System.out.println("8)Saber las ganancias");
-            System.out.println("9)Saber el % de ventas");
-            System.out.println("10)Saber el % de ganancias");
-            System.out.println("0)Salir\n");
-            opc = leer.nextInt();//se reciben los datos
-            while(opc<0 || opc>10){//validacion de que sea la opcion que se desea no mayor ni menor
-                System.out.println("Opcion no valida");
+            //CREACION DE MENU
+            System.out.println("               SELECCIONE UN PRODUCTO A COMPRAR: ");
+            System.out.println("N)  NOMBRE                      PRECIO              CANTIDAD");
+            System.out.println("1) "+papas.nombre+"               "+papas.precio+"                  "+papas.cantidad);
+            System.out.println("2) "+galletas.nombre+"             "+galletas.precio+"                  "+galletas.cantidad);
+            System.out.println("3) "+cheetos.nombre+"                       "+cheetos.precio+"                  "+cheetos.cantidad);
+            System.out.println("4) "+ponque.nombre+"                    "+ponque.precio+"                  "+ponque.cantidad);
+            System.out.println("5) "+uA.nombre+"                    "+uA.precio+"                  "+uA.cantidad);
+            System.out.println("6) "+uB.nombre+"                    "+uB.precio+"                  "+uB.cantidad);
+            System.out.println("7) OPCIONES AVANZADAS");
+            System.out.println("0) SALIR");
+            opc = leer.nextInt();
+            while(opc<0 || opc>7){
+                System.out.println("OPCION NO VALIDA");
                 opc = leer.nextInt();
             }
+            //REALIZA LA COMPRA SEGUN LA OPCION ELEGIDA
             switch(opc){
-                case 0:
-                    System.out.println("Ha salido del programa");
-                    break;
                 case 1:
-                    //margaritas
-                    while(papas.cantidad>0){
-                        cP--;
-                        cPapas++;
-                        System.out.println("\nHas comprado "+papas.nombre+" con un precio de: "+papas.precio+" y los productos restantes son : "+(papas.cantidad-1)+"\n");
-                        gPapas = cPapas*papas.precio;
-                        porGanT = + gPapas; 
-                        papas.ganancias = (cPapas*100)/porGanT;
-                        papas.ventas = (cPapas*100)/porVenT; 
-                        break;
-                    }
-                    while(papas.cantidad==0){
-                        System.out.println("\nSe han agotado las papas, deseas cargar una nueva cantidad de papas?\n");
-                        System.out.println("1) si");
-                        System.out.println("2) no");
-                        opc = leer2.nextInt();
-                        while(opc<1 || opc>2){
-                            System.out.println("opcion invalida");
-                            opc = leer2.nextInt();
+                    //validacion de las papas
+                    if(papas.cantidad!=0){
+                        papas.cantidad--;
+                        papas.ventas++;
+                        porv = porv+papas.ventas;
+                        papas.ganancias = papas.ganancias + papas.precio;
+                        porg = porg+papas.ganancias;
+                        System.out.println("SE HA COMPRADO "+papas.nombre);
+                    }else{
+                        //validacion para ingresar una nueva cantidad de producto
+                        System.out.println("EL PRODUCTO SE HA AGOTADO");
+                        System.out.println("DIGITE LA CANTIDAD DE "+papas.nombre+" PARA REABASTECER");
+                        papas.cantidad = leer.nextInt();
+                        //validacion de datos
+                        while(papas.cantidad<0){
+                            System.out.println("NUMERO NO VALIDO");
+                            papas.cantidad = leer.nextInt();
                         }
-                        switch(opc){
-                            case 1:
-                                System.out.println("Ingrese la cantidad de "+papas.nombre);
-                                cP = leer.nextInt();
-                                while(cP<=0){
-                                    System.out.println("cantidad invalida");
-                                    cP = leer.nextInt();
-                                }
-                            break;    
-                            case 2:
-                                opc=1;
-                            break;
-                        }
-                        break;
                     }
                     break;
                 case 2:
-                    //galletas
-                    while(galletas.cantidad>0){
-                        cG--;
-                        cGalletas++;
-                        System.out.println("\nHas comprado "+galletas.nombre+" con un precio de: "+galletas.precio+" y los productos restantes son : "+(galletas.cantidad-1)+"\n");
-                        gGalletas = cGalletas*galletas.precio;
-                        porGanT = + gGalletas; 
-                        galletas.ganancias = (cGalletas*100)/porGanT;
-                        galletas.ventas = (cGalletas*100)/porVenT; 
-                        
-                        break;
-                    }
-                    while(galletas.cantidad==0){
-                        System.out.println("\nSe han agotado las galletas, deseas cargar una nueva cantidad?\n");
-                        System.out.println("1) si");
-                        System.out.println("2) no");
-                        opc = leer2.nextInt();
-                        while(opc<1 || opc>2){
-                            System.out.println("opcion invalida");
-                            opc = leer2.nextInt();
+                    //validacion de las galletas
+                    if(galletas.cantidad!=0){
+                        galletas.cantidad--;
+                        galletas.ventas++;
+                        porv = porv+galletas.ventas;
+                        galletas.ganancias = galletas.ganancias + galletas.precio;
+                        porg = porg+galletas.ganancias;
+                        System.out.println("SE HA COMPRADO "+galletas.nombre);
+                    }else{
+                        //validacion para ingresar una nueva cantidad de producto
+                        System.out.println("EL PRODUCTO SE HA AGOTADO");
+                        System.out.println("DIGITE LA CANTIDAD DE "+galletas.nombre+" PARA REABASTECER");
+                        galletas.cantidad = leer.nextInt();
+                        while(galletas.cantidad<0){
+                            System.out.println("NUMERO NO VALIDO");
+                            galletas.cantidad = leer.nextInt();
                         }
-                        switch(opc){
-                            case 1:
-                                System.out.println("Ingrese la cantidad de "+galletas.nombre);
-                                cG = leer.nextInt();
-                                while(cG<=0){
-                                    System.out.println("cantidad invalida");
-                                    cG = leer.nextInt();
-                                }
-                            break;    
-                            case 2:
-                                opc=1;
-                            break;
-                        } 
-                        break;
                     }
                     break;
-                    
                 case 3:
-                    //chitos
-                    while(chitos.cantidad>0){
-                        cC--;
-                        cChitos++;
-                        System.out.println("\nHas comprado "+chitos.nombre+" con un precio de: "+chitos.precio+" y los productos restantes son : "+(chitos.cantidad-1)+"\n");
-                        gChitos = cChitos*chitos.precio;
-                        porGanT = + gChitos; 
-                        chitos.ganancias= (cChitos*100)/porGanT;
-                        chitos.ventas = (cChitos*100)/porVenT; 
-                        break;
-                    }
-                    while(chitos.cantidad==0){
-                        System.out.println("\nSe han agotado los chitos, desea volver a cargar el producto?\n");
-                        System.out.println("1) si");
-                        System.out.println("2) no");
-                        opc = leer2.nextInt();
-                        while(opc<1 || opc>2){
-                            System.out.println("opcion invalida");
-                            opc = leer2.nextInt();
+                    //validacion de los cheetos
+                    if(cheetos.cantidad!=0){
+                        cheetos.cantidad--;
+                        cheetos.ventas++;
+                        porv = porv+papas.ventas;
+                        cheetos.ganancias = cheetos.ganancias + cheetos.precio;
+                        porg = porg+papas.ganancias;
+                        System.out.println("SE HA COMPRADO "+cheetos.nombre);
+                    }else{
+                        //validacion para recargar de nuevo la cantidad del producto
+                        System.out.println("EL PRODUCTO SE HA AGOTADO");
+                        System.out.println("DIGITE LA CANTIDAD DE "+cheetos.nombre+" PARA REABASTECER");
+                        cheetos.cantidad = leer.nextInt();
+                        while(cheetos.cantidad<0){
+                            System.out.println("NUMERO NO VALIDO");
+                            cheetos.cantidad = leer.nextInt();
                         }
-                        switch(opc){
-                            case 1:
-                                System.out.println("Ingrese la cantidad de "+chitos.nombre);
-                                cC = leer.nextInt();
-                                while(cC<=0){
-                                    System.out.println("cantidad invalida");
-                                    cC = leer.nextInt();
-                                }
-                            break;    
-                            case 2:
-                                opc=1;
-                            break;
-                        }
-                        break;
                     }
                     break;
                 case 4:
-                    //chocorramo
-                    while(chocorramo.cantidad>0){
-                        cCh--;
-                        cChocorramo++;
-                        System.out.println("\nHas comprado "+chocorramo.nombre+" con un precio de: "+chocorramo.precio+" y los productos restantes son : "+(chocorramo.cantidad-1)+"\n");
-                        gChocorramo = cChocorramo*chocorramo.precio;
-                        porGanT = + gChocorramo; 
-                        chocorramo.ganancias= (cChocorramo*100)/porGanT;
-                        chocorramo.ventas = (cChocorramo*100)/porVenT; 
-                        break;
-                    }
-                    while(galletas.cantidad==0){
-                        System.out.println("\nSe ha agotado los chocorramos, deseas cargar una nueva cantidad del producto?\n");
-                        System.out.println("1) si");
-                        System.out.println("2) no");
-                        opc = leer2.nextInt();
-                        while(opc<1 || opc>2){
-                            System.out.println("opcion invalida");
-                            opc = leer2.nextInt();
+                    //validacion del chocorramo
+                    if(ponque.cantidad!=0){
+                        ponque.cantidad--;
+                        ponque.ventas++;
+                        porv = porv+ponque.ventas;
+                        ponque.ganancias = ponque.ganancias + ponque.precio;
+                        porg = porg+ponque.ganancias;
+                        System.out.println("SE HA COMPRADO "+ponque.nombre);
+                    }else{
+                        //validacion para recargar el producto nuevamente
+                        System.out.println("EL PRODUCTO SE HA AGOTADO");
+                        System.out.println("DIGITE LA CANTIDAD DE "+ponque.nombre+" PARA REABASTECER");
+                        ponque.cantidad = leer.nextInt();
+                        while(ponque.cantidad<0){
+                            System.out.println("NUMERO NO VALIDO");
+                            ponque.cantidad = leer.nextInt();
                         }
-                        switch(opc){
-                            case 1:
-                                System.out.println("Ingrese la cantidad de "+chocorramo.nombre);
-                                cCh = leer.nextInt();
-                                while(cCh<=0){
-                                    System.out.println("cantidad invalida");
-                                    cCh = leer.nextInt();
-                                }
-                            break;    
-                            case 2:
-                                opc=1;
-                            break;
-                        }
-                        break;
                     }
                     break;
                 case 5:
-                    //producto 1 del usuario
-                    while(p1.cantidad>0){
-                        cP1--;
-                        cPro1++;
-                        System.out.println("\nHas comprado "+p1.nombre+" con un precio de: "+p1.precio+" y los productos restantes son : "+(p1.cantidad-1)+"\n");
-                        gP1 = cPro1*p1.precio;
-                        porGanT = + gP1; 
-                        p1.ganancias= (cP1*100)/porGanT;
-                        p1.ventas = (cP1*100)/porVenT; 
-                        break;
-                    }
-                    while(p1.cantidad==0){
-                        System.out.println("\nSe ha agotado "+p1.nombre+", desea ingresar una nueva cantidad?\n");
-                        System.out.println("1) si");
-                        System.out.println("2) no");
-                        opc = leer2.nextInt();
-                        while(opc<1 || opc>2){
-                            System.out.println("opcion invalida");
-                            opc = leer2.nextInt();
+                    //validacion del producto personalizado numero 1
+                    if(uA.cantidad!=0){
+                       uA.cantidad--;
+                        uA.ventas++;
+                        porv = porv+uA.ventas;
+                        uA.ganancias = uA.ganancias + uA.precio;
+                        porg = porg+uA.ganancias;
+                        System.out.println("SE HA COMPRADO "+uA.nombre);
+                    }else{
+                        //recargar de nuevo la cantidad del producto
+                        System.out.println("EL PRODUCTO SE HA AGOTADO");
+                        System.out.println("DIGITE LA CANTIDAD DE "+uA.nombre+" PARA REABASTECER");
+                        uA.cantidad = leer.nextInt();
+                        while(uA.cantidad<0){
+                            System.out.println("NUMERO NO VALIDO");
+                            uA.cantidad = leer.nextInt();
                         }
-                        switch(opc){
-                            case 1:
-                                System.out.println("Ingrese la cantidad de "+pro1);
-                                cP1 = leer.nextInt();
-                                while(cP1<=0){
-                                    System.out.println("cantidad invalida");
-                                    cP1 = leer.nextInt();
-                                }
-                            break;    
-                            case 2:
-                                opc=1;
-                            break;
-                        }
-                        break;
                     }
                     break;
                 case 6:
-                    //producto 2 del usuario
-                    while(p2.cantidad>0){
-                        cP2--;
-                        cPro2++;
-                        System.out.println("\nHas comprado "+p2.nombre+" con un precio de: "+p2.precio+" y los productos restantes son : "+(p2.cantidad-1)+"\n");
-                        gP2 = cPro2*p2.precio;
-                        porGanT = + gP2; 
-                        p2.ganancias = (cP2*100)/porGanT;
-                        p2.ventas = (cP2*100)/porVenT; 
-                        break;
-                    }
-                    while(p2.cantidad == 0){
-                        System.out.println("\nSe ha agotado "+p2.nombre+", desea ingresar una nueva cantidad?\n");
-                        System.out.println("1) si");
-                        System.out.println("2) no");
-                        opc = leer2.nextInt();
-                        while(opc<1 || opc>2){
-                            System.out.println("opcion invalida");
-                            opc = leer2.nextInt();
+                    //validacion del producto personalizado numero 2
+                    if(uB.cantidad!=0){
+                        uB.cantidad--;
+                        uB.ventas++;
+                        porv = porv+uB.ventas;
+                        uB.ganancias = uB.ganancias + uB.precio;
+                        porg = porg+uB.ganancias;
+                        System.out.println("SE HA COMPRADO "+uB.nombre);
+                    }else{
+                        //validacion para recargar nuevamente la cantidad el producto
+                        System.out.println("EL PRODUCTO SE HA AGOTADO");
+                        System.out.println("DIGITE LA CANTIDAD DE "+uB.nombre+" PARA REABASTECER");
+                        uB.cantidad = leer.nextInt();
+                        while(uB.cantidad<0){
+                            System.out.println("NUMERO NO VALIDO");
+                            uB.cantidad = leer.nextInt();
                         }
-                        switch(opc){
-                            case 1:
-                                System.out.println("Ingrese la cantidad de "+pro2);
-                                cP2 = leer.nextInt();
-                                while(cP2<=0){
-                                    System.out.println("cantidad invalida");
-                                    cP2 = leer.nextInt();
-                                }
-                            break;    
-                            case 2:
-                                opc=1;
-                            break;
-                        }
-                        break;
                     }
                     break;
                 case 7:
-                    //calcular las ventas
-                    System.out.println("la cantidad de ventas de las papas margarita es de: "+cPapas);
-                    System.out.println("la cantidad de ventas de las galletas es de: "+cGalletas);
-                    System.out.println("la cantidad de ventas de los chitos es de: "+cChitos);
-                    System.out.println("la cantidad de ventas de los chocorramos es de: "+cChocorramo);
-                    System.out.println("la cantidad de ventas de "+pro1+" es de: "+cPro1);
-                    System.out.println("la cantidad de ventas de "+pro2+" es de: "+cPro2);
-                    break;
-                case 8:
-                    //calcular las ganancias
-                    System.out.println("\nla cantidad de ganancias de las papas margarita es de: "+gPapas);
-                    System.out.println("la cantidad de ganancias de las galletas es de: "+gGalletas);
-                    System.out.println("la cantidad de ganancias de los chitos es de: "+gChitos);
-                    System.out.println("la cantidad de ganancias de los chocorramos es de: "+gChocorramo);
-                    System.out.println("la cantidad de ganancias de "+pro1+" es de: "+gP1);
-                    System.out.println("la cantidad de ganancias de "+pro2+" es de: "+gP2);
-                    System.out.println("");
-                    break;
-                case 9:
-                    //calcular el % de las ventas
-                    System.out.println("\nEl % de ventas de las papas margarita es de: "+papas.ganancias);
-                    System.out.println("El % de ventas de las galletas es de: "+galletas.ganancias);
-                    System.out.println("El % de ventas de los chitos es de: "+chitos.ganancias);
-                    System.out.println("El % de ventas de los chocorramos es de: "+chocorramo.ganancias);
-                    System.out.println("El % de ventas de "+pro1+" es de: "+p1.ganancias);
-                    System.out.println("El % de ventas de "+pro2+" es de: "+p2.ganancias);
-                    System.out.println("");
-                    break;
-                case 10:
-                    //calcular el % de las ganancias
-                    System.out.println("\nEl % de ganancias de las papas margarita es de: "+papas.ventas);
-                    System.out.println("El % de ganancias de las galletas es de: "+galletas.ventas);
-                    System.out.println("El % de ganancias de los chitos es de: "+chitos.ventas);
-                    System.out.println("El % de ganancias de los chocorramos es de: "+chocorramo.ventas);
-                    System.out.println("El % de ganancias de "+pro1+" es de: "+p1.ventas);
-                    System.out.println("El % de ganancias de "+pro2+" es de: "+p2.ventas);
-                    System.out.println("");
+                    //CREA UN MENU PARA LAS OPCIONES AVANZADAS
+                    int opcb;
+                    System.out.println("SELECCIONE UNA OPCION");
+                    System.out.println("1) AGREGAR INVENTARIO");
+                    System.out.println("2) VER PORCENTAJE DE VENTAS");
+                    System.out.println("3) VER VENTAS");
+                    System.out.println("4) VER PORCENTAJE DE GANANCIAS");
+                    System.out.println("5) VER GANANCIAS");
+                    System.out.println("0) VOLVER AL MENU PRINCIPAL");
+                    opcb = leer.nextInt();
+                    //validacion de las opciones
+                    while(opcb<0 || opcb>5){
+                        System.out.println("OPCION NO VALIDA");
+                        opcb = leer.nextInt();
+                    }
+                    switch(opcb){
+                        case 1:
+                            System.out.println("Digite cuanto producto desea agregar");
+                            add = leer.nextInt();
+                            while(add<0){
+                                System.out.println("NUMERO NO VALIDO");
+                                add = leer.nextInt();
+                            }
+                            System.out.println("               SELECCIONE UN PRODUCTO A REPONER: ");
+                            System.out.println("N)  NOMBRE                      PRECIO              CANTIDAD");
+                            System.out.println("1) "+papas.nombre+"               "+papas.precio+"                  "+papas.cantidad);
+                            System.out.println("2) "+galletas.nombre+"             "+galletas.precio+"                  "+galletas.cantidad);
+                            System.out.println("3) "+cheetos.nombre+"                       "+cheetos.precio+"                  "+cheetos.cantidad);
+                            System.out.println("4) "+ponque.nombre+"                    "+ponque.precio+"                  "+ponque.cantidad);
+                            System.out.println("5) "+uA.nombre+"                    "+uA.precio+"                  "+uA.cantidad);
+                            System.out.println("6) "+uB.nombre+"                    "+uB.precio+"                  "+uB.cantidad);
+                            opcc= leer.nextInt();
+                            while(opcc<0){
+                                System.out.println("OPCION NO VALIDA");
+                                opcc = leer.nextInt();
+                            }
+                            //segun el producto, se agrega mas cantidad
+                            switch(opcc){
+                                case 1:
+                                    papas.cantidad+=add;
+                                    break;
+                                case 2:
+                                    galletas.cantidad+=add;
+                                    break;
+                                case 3:
+                                    cheetos.cantidad+=add;
+                                    break;
+                                case 4:
+                                    ponque.cantidad+=add;
+                                    break;
+                                case 5:
+                                    uA.cantidad+=add;
+                                    break;
+                                case 6:
+                                    uB.cantidad+=add;
+                                    break;
+                            }
+                            break;
+                        case 2:
+                            //menu para evaluar los porcentajes de cada producto
+                            int pv;
+                            System.out.println("               SELECCIONE UN PRODUCTO A EVALUAR (PORCENTAJE VENTAS): ");
+                            System.out.println("N)  NOMBRE                      PRECIO              CANTIDAD");
+                            System.out.println("1) "+papas.nombre+"               "+papas.precio+"                  "+papas.cantidad);
+                            System.out.println("2) "+galletas.nombre+"             "+galletas.precio+"                  "+galletas.cantidad);
+                            System.out.println("3) "+cheetos.nombre+"                       "+cheetos.precio+"                  "+cheetos.cantidad);
+                            System.out.println("4) "+ponque.nombre+"                    "+ponque.precio+"                  "+ponque.cantidad);
+                            System.out.println("5) "+uA.nombre+"                    "+uA.precio+"                  "+uA.cantidad);
+                            System.out.println("6) "+uB.nombre+"                    "+uB.precio+"                  "+uB.cantidad);
+                            opcc = leer.nextInt();
+                            while(opcc<0){
+                                System.out.println("OPCION NO VALIDA");
+                                opcc = leer.nextInt();
+                            }
+                            //segun la opcion, muestra el porcentaje de cada producto
+                            switch(opcc){
+                                case 1:
+                                    pv = (int)((papas.ventas*100)/porv);
+                                    System.out.println("EL "+pv+"% DE LAS VENTAS ES DE "+papas.nombre);
+                                    break;
+                                case 2:
+                                    pv = (int)((galletas.ventas*100)/porv);
+                                    System.out.println("EL "+pv+"% DE LAS VENTAS ES DE "+galletas.nombre);
+                                    break;
+                                case 3:
+                                    pv = (int)((cheetos.ventas*100)/porv);
+                                    System.out.println("EL "+pv+"% DE LAS VENTAS ES DE "+cheetos.nombre);
+                                    break;
+                                case 4:
+                                    pv = (int)((ponque.ventas*100)/porv);
+                                    System.out.println("EL "+pv+"% DE LAS VENTAS ES DE "+ponque.nombre);
+                                    break;
+                                case 5:
+                                    pv = (int)((uA.ventas*100)/porv);
+                                    System.out.println("EL "+pv+"% DE LAS VENTAS ES DE "+uA.nombre);
+                                    break;
+                                case 6:
+                                    pv = (int)((uB.ventas*100)/porv);
+                                    System.out.println("EL "+pv+"% DE LAS VENTAS ES DE "+uB.nombre);
+                                    break;
+                            }
+                            break;
+                        case 3:
+                            //menu para mostrar las ventas
+                            System.out.println("               SELECCIONE UN PRODUCTO A EVALUAR (VENTAS): ");
+                            System.out.println("N)  NOMBRE                      PRECIO              CANTIDAD");
+                            System.out.println("1) "+papas.nombre+"               "+papas.precio+"                  "+papas.cantidad);
+                            System.out.println("2) "+galletas.nombre+"             "+galletas.precio+"                  "+galletas.cantidad);
+                            System.out.println("3) "+cheetos.nombre+"                       "+cheetos.precio+"                  "+cheetos.cantidad);
+                            System.out.println("4) "+ponque.nombre+"                    "+ponque.precio+"                  "+ponque.cantidad);
+                            System.out.println("5) "+uA.nombre+"                    "+uA.precio+"                  "+uA.cantidad);
+                            System.out.println("6) "+uB.nombre+"                    "+uB.precio+"                  "+uB.cantidad);
+                            opcc = leer.nextInt();
+                            while(opcc<0){
+                                System.out.println("OPCION NO VALIDA");
+                                opcc = leer.nextInt();
+                            }
+                            switch(opcc){
+                                //segun la opcion, muestra la cantidad de ventas de cada producto
+                                case 1:
+                                    System.out.println("SE HAN VENDIDO "+papas.ventas+" "+papas.nombre);
+                                    break;
+                                case 2:
+                                    System.out.println("SE HAN VENDIDO "+galletas.ventas+" "+galletas.nombre);
+                                    break;
+                                case 3:
+                                    System.out.println("SE HAN VENDIDO "+cheetos.ventas+" "+cheetos.nombre);
+                                    break;
+                                case 4:
+                                    System.out.println("SE HAN VENDIDO "+ponque.ventas+" "+ponque.nombre);
+                                    break;
+                                case 5:
+                                    System.out.println("SE HAN VENDIDO "+uA.ventas+" "+uA.nombre);
+                                    break;
+                                case 6:
+                                    System.out.println("SE HAN VENDIDO "+uB.ventas+" "+uB.nombre);
+                                    break;
+                            }
+                            break;
+                        case 4:
+                            //menu para consultar el porcentaje de ganancias
+                            int pg;
+                            System.out.println("               SELECCIONE UN PRODUCTO A EVALUAR (PORCENTAJE GANANCIA): ");
+                            System.out.println("N)  NOMBRE                      PRECIO              CANTIDAD");
+                            System.out.println("1) "+papas.nombre+"               "+papas.precio+"                  "+papas.cantidad);
+                            System.out.println("2) "+galletas.nombre+"             "+galletas.precio+"                  "+galletas.cantidad);
+                            System.out.println("3) "+cheetos.nombre+"                       "+cheetos.precio+"                  "+cheetos.cantidad);
+                            System.out.println("4) "+ponque.nombre+"                    "+ponque.precio+"                  "+ponque.cantidad);
+                            System.out.println("5) "+uA.nombre+"                    "+uA.precio+"                  "+uA.cantidad);
+                            System.out.println("6) "+uB.nombre+"                    "+uB.precio+"                  "+uB.cantidad);
+                            opcc = leer.nextInt();
+                            while(opcc<0){
+                                System.out.println("OPCION NO VALIDA");
+                                opcc = leer.nextInt();
+                            }
+                            switch(opcc){
+                                //segun la opcion, muestra el porcentaje de ganancias de cada producto
+                                case 1:
+                                    pg = (int)((papas.ventas*100)/porv);
+                                    System.out.println("EL "+pg+"% DE LAS GANANCIAS ES DE "+papas.nombre);
+                                    break;
+                                case 2:
+                                    pg = (int)((galletas.ventas*100)/porv);
+                                    System.out.println("EL "+pg+"% DE LAS GANANCIAS ES DE "+galletas.nombre);
+                                    break;
+                                case 3:
+                                    pg = (int)((cheetos.ventas*100)/porv);
+                                    System.out.println("EL "+pg+"% DE LAS GANANCIAS ES DE "+cheetos.nombre);
+                                    break;
+                                case 4:
+                                    pg = (int)((ponque.ventas*100)/porv);
+                                    System.out.println("EL "+pg+"% DE LAS GANANCIAS ES DE "+ponque.nombre);
+                                    break;
+                                case 5:
+                                    pg = (int)((uA.ventas*100)/porv);
+                                    System.out.println("EL "+pg+"% DE LAS GANANCIAS ES DE "+uA.nombre);
+                                    break;
+                                case 6:
+                                    pg = (int)((uB.ventas*100)/porv);
+                                    System.out.println("EL "+pg+"% DE LAS GANANCIAS ES DE "+uB.nombre);
+                                    break;
+                            }
+                            break;
+                        case 5:
+                            //menu para saber las ganancias de cada producto
+                            System.out.println("               SELECCIONE UN PRODUCTO A EVALUAR(GANANCIA): ");
+                            System.out.println("N)  NOMBRE                      PRECIO              CANTIDAD");
+                            System.out.println("1) "+papas.nombre+"               "+papas.precio+"                  "+papas.cantidad);
+                            System.out.println("2) "+galletas.nombre+"             "+galletas.precio+"                  "+galletas.cantidad);
+                            System.out.println("3) "+cheetos.nombre+"                       "+cheetos.precio+"                  "+cheetos.cantidad);
+                            System.out.println("4) "+ponque.nombre+"                    "+ponque.precio+"                  "+ponque.cantidad);
+                            System.out.println("5) "+uA.nombre+"                    "+uA.precio+"                  "+uA.cantidad);
+                            System.out.println("6) "+uB.nombre+"                    "+uB.precio+"                  "+uB.cantidad);
+                            opcc = leer.nextInt();
+                            //validacion de la opcion
+                            while(opcc<0){
+                                System.out.println("OPCION NO VALIDA");
+                                opcc = leer.nextInt();
+                            }
+                            //segun la opcion, muestra las ganancias de cada producto
+                            switch(opcc){
+                                case 1:
+                                    System.out.println("SE HA GANADO $"+papas.ganancias+" EN "+papas.nombre);
+                                    break;
+                                case 2:
+                                    System.out.println("SE HA GANADO $"+galletas.ganancias+" EN "+galletas.nombre);
+                                    break;
+                                case 3:
+                                    System.out.println("SE HA GANADO $"+cheetos.ganancias+" EN "+cheetos.nombre);
+                                    break;
+                                case 4:
+                                    System.out.println("SE HA GANADO $"+ponque.ganancias+" EN "+ponque.nombre);
+                                    break;
+                                case 5:
+                                    System.out.println("SE HA GANADO $"+uA.ganancias+" EN "+uA.nombre);
+                                    break;
+                                case 6:
+                                    System.out.println("SE HA GANADO $"+uB.ganancias+" EN "+uB.nombre);
+                                    break;
+                            }
+                            break;
+                    }
                     break;
             }
         }
     }
-}           
-
+}
